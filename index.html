@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT COACH</title>
+
+    <style>
+
+        /* ========================= */
+        /* RESET */
+        /* ========================= */
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#f5f5f5;
+            color:#333;
+            overflow-x:hidden;
+        }
+
+        img{
+            max-width:100%;
+            display:block;
+        }
+
+        /* ========================= */
+        /* NAVBAR */
+        /* ========================= */
+
+        .navbar{
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:#111;
+            padding:15px 40px;
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+        .logo{
+            color:#ffcc00;
+            font-size:32px;
+            font-weight:bold;
+        }
+
+        .navbar ul{
+            display:flex;
+            list-style:none;
+            gap:20px;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            transition:0.3s;
+            font-size:17px;
+        }
+
+        .navbar a:hover{
+            color:#ffcc00;
+        }
+
+        /* MENÚ RESPONSIVE */
+
+        .menu-toggle{
+            display:none;
+            font-size:30px;
+            color:white;
+            cursor:pointer;
+        }
+
+        /* ========================= */
+        /* HERO */
+        /* ========================= */
+
+        .hero{
+            min-height:100vh;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)),
+            url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80");
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:20px;
+            color:white;
+        }
+
+        .hero-text{
+            max-width:700px;
+            background:rgba(0,0,0,0.5);
+            padding:40px;
+            border-radius:20px;
+        }
+
+        .hero-text h1{
+            font-size:60px;
+            margin-bottom:20px;
+        }
+
+        .hero-text p{
+            font-size:20px;
+            margin-bottom:30px;
+            line-height:1.5;
+        }
+
+        .btn{
+            display:inline-block;
+            background:#ffcc00;
+            color:black;
+            padding:15px 35px;
+            border-radius:40px;
+            text-decoration:none;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:white;
+            transform:scale(1.05);
+        }
+
+        /* ========================= */
+        /* ESTADÍSTICAS */
+        /* ========================= */
+
+        .stats{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+            padding:60px 20px;
+            background:white;
+        }
+
+        .stat{
+            background:#111;
+            color:white;
+            width:220px;
+            padding:35px 20px;
+            border-radius:15px;
+            text-align:center;
+        }
+
+        .stat h2{
+            color:#ffcc00;
+            font-size:40px;
+            margin-bottom:10px;
+        }
+
+        /* ========================= */
+        /* TARJETAS */
+        /* ========================= */
+
+        .contenedor{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+            padding:70px 20px;
+        }
+
+        .card{
+            background:white;
+            width:300px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 5px 15px rgba(0,0,0,0.15);
+            transition:0.3s;
+            text-align:center;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        .card img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .card h3{
+            margin:20px 0 10px;
+            font-size:26px;
+        }
+
+        .card p{
+            padding:0 20px 20px;
+            line-height:1.5;
+        }
+
+        .card button{
+            margin-bottom:25px;
+            background:#111;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            border-radius:30px;
+            cursor:pointer;
+            transition:0.3s;
+            font-weight:bold;
+        }
+
+        .card button:hover{
+            background:#ffcc00;
+            color:black;
+        }
+
+        /* ========================= */
+        /* SERVICIOS */
+        /* ========================= */
+
+        .servicios{
+            background:#ffffff;
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .servicios h2{
+            font-size:45px;
+            margin-bottom:50px;
+        }
+
+        .servicios-box{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+        }
+
+        .servicio{
+            background:#f1f1f1;
+            width:280px;
+            padding:35px;
+            border-radius:20px;
+            transition:0.3s;
+        }
+
+        .servicio:hover{
+            background:#111;
+            color:white;
+            transform:scale(1.05);
+        }
+
+        /* ========================= */
+        /* GALERÍA */
+        /* ========================= */
+
+        .galeria{
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .galeria h2{
+            font-size:45px;
+            margin-bottom:40px;
+        }
+
+        .galeria-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:20px;
+        }
+
+        .galeria-grid img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:20px;
+            transition:0.3s;
+        }
+
+        .galeria-grid img:hover{
+            transform:scale(1.03);
+        }
+
+        /* ========================= */
+        /* VIDEO */
+        /* ========================= */
+
+        .video{
+            background:#111;
+            color:white;
+            text-align:center;
+            padding:80px 20px;
+        }
+
+        .video h2{
+            font-size:45px;
+            margin-bottom:30px;
+        }
+
+        .video-contenedor{
+            max-width:900px;
+            margin:auto;
+            border-radius:20px;
+            overflow:hidden;
+        }
+
+        .video-contenedor iframe{
+            width:100%;
+            height:500px;
+            border:none;
+        }
+
+        /* ========================= */
+        /* TESTIMONIOS */
+        /* ========================= */
+
+        .testimonios{
+            padding:80px 20px;
+            text-align:center;
+            background:white;
+        }
+
+        .testimonios h2{
+            font-size:45px;
+            margin-bottom:40px;
+        }
+
+        .testimonio-box{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+        }
+
+        .testimonio{
+            background:#111;
+            color:white;
+            width:320px;
+            padding:30px;
+            border-radius:20px;
+        }
+
+        /* ========================= */
+        /* PLANES */
+        /* ========================= */
+
+        .planes{
+            background:#f1f1f1;
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .planes h2{
+            font-size:45px;
+            margin-bottom:40px;
+        }
+
+        .planes-box{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+        }
+
+        .plan{
+            background:white;
+            width:300px;
+            padding:35px;
+            border-radius:20px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .precio{
+            font-size:40px;
+            color:#ff9900;
+            margin:20px 0;
+            font-weight:bold;
+        }
+
+        /* ========================= */
+        /* PLAN SEMANAL */
+        /* ========================= */
+
+        .planes-semana{
+            padding:80px 20px;
+            background:white;
+            text-align:center;
+        }
+
+        .planes-semana h2{
+            font-size:45px;
+            margin-bottom:40px;
+        }
+
+        .tabla-plan{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+
+        .dia{
+            background:#111;
+            color:white;
+            width:200px;
+            padding:30px;
+            border-radius:15px;
+            transition:0.3s;
+        }
+
+        .dia:hover{
+            transform:scale(1.05);
+            background:#ffcc00;
+            color:black;
+        }
+
+        /* ========================= */
+        /* CONTADOR */
+        /* ========================= */
+
+        .contador{
+            background:#ffcc00;
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .contador h2{
+            margin-bottom:20px;
+            font-size:40px;
+        }
+
+        #contador-numero{
+            font-size:70px;
+            font-weight:bold;
+        }
+
+        /* ========================= */
+        /* IMC */
+        /* ========================= */
+
+        .imc{
+            padding:80px 20px;
+            background:#f5f5f5;
+            text-align:center;
+        }
+
+        .imc h2{
+            font-size:45px;
+            margin-bottom:30px;
+        }
+
+        .imc-box{
+            max-width:400px;
+            margin:auto;
+        }
+
+        .imc-box input{
+            width:100%;
+            padding:15px;
+            margin-bottom:15px;
+            border-radius:10px;
+            border:1px solid #ccc;
+        }
+
+        .imc-box button{
+            width:100%;
+            padding:15px;
+            background:#111;
+            color:white;
+            border:none;
+            border-radius:30px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .imc-box button:hover{
+            background:#ffcc00;
+            color:black;
+        }
+
+        #resultado-imc{
+            margin-top:20px;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        /* ========================= */
+        /* BENEFICIOS */
+        /* ========================= */
+
+        .beneficios{
+            padding:80px 20px;
+            background:white;
+            text-align:center;
+        }
+
+        .beneficios h2{
+            font-size:45px;
+            margin-bottom:40px;
+        }
+
+        .beneficios-box{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+
+        .beneficio{
+            background:#f1f1f1;
+            width:280px;
+            padding:30px;
+            border-radius:20px;
+            transition:0.3s;
+        }
+
+        .beneficio:hover{
+            transform:translateY(-10px);
+            background:#111;
+            color:white;
+        }
+
+        /* ========================= */
+        /* CONTACTO */
+        /* ========================= */
+
+        .contacto{
+            padding:80px 20px;
+            text-align:center;
+            background:white;
+        }
+
+        .contacto h2{
+            font-size:45px;
+            margin-bottom:35px;
+        }
+
+        .formulario{
+            max-width:600px;
+            margin:auto;
+        }
+
+        .formulario input,
+        .formulario textarea{
+            width:100%;
+            padding:16px;
+            margin-bottom:15px;
+            border-radius:12px;
+            border:1px solid #ccc;
+            font-size:16px;
+        }
+
+        .formulario textarea{
+            height:130px;
+            resize:none;
+        }
+
+        .btn-whatsapp{
+            display:inline-block;
+            width:100%;
+            background:#25D366;
+            color:white;
+            padding:16px;
+            border-radius:40px;
+            text-decoration:none;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn-whatsapp:hover{
+            background:#1ebe5d;
+        }
+
+        /* BOTÓN ARRIBA */
+
+        .btn-top{
+            position:fixed;
+            bottom:20px;
+            right:20px;
+            background:#ffcc00;
+            color:black;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration:none;
+            font-size:25px;
+            font-weight:bold;
+        }
+
+        .btn-top:hover{
+            background:#111;
+            color:white;
+        }
+
+        /* ========================= */
+        /* FOOTER */
+        /* ========================= */
+
+        footer{
+            background:#111;
+            color:white;
+            text-align:center;
+            padding:25px;
+        }
+
+        /* ========================= */
+        /* RESPONSIVE */
+        /* ========================= */
+
+        @media(max-width:768px){
+
+            .navbar{
+                padding:15px 20px;
+            }
+
+            .menu-toggle{
+                display:block;
+            }
+
+            .navbar ul{
+                display:none;
+                flex-direction:column;
+                position:absolute;
+                top:70px;
+                left:0;
+                width:100%;
+                background:#111;
+                padding:20px 0;
+                text-align:center;
+            }
+
+            .navbar ul.active{
+                display:flex;
+            }
+
+            .hero{
+                min-height:75vh;
+            }
+
+            .hero-text{
+                width:100%;
+                padding:25px;
+            }
+
+            .hero-text h1{
+                font-size:34px;
+            }
+
+            .hero-text p{
+                font-size:16px;
+            }
+
+            .btn{
+                width:100%;
+            }
+
+            .card,
+            .servicio,
+            .testimonio,
+            .plan,
+            .stat,
+            .dia,
+            .beneficio{
+                width:100%;
+                max-width:340px;
+            }
+
+            .video-contenedor iframe{
+                height:250px;
+            }
+
+            .servicios h2,
+            .galeria h2,
+            .video h2,
+            .planes h2,
+            .contacto h2,
+            .testimonios h2,
+            .beneficios h2,
+            .imc h2{
+                font-size:32px;
+            }
+
+            #contador-numero{
+                font-size:50px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">FIT COACH</div>
+
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
+    </div>
+
+    <ul id="menu">
+
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#rutinas">Rutinas</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-text">
+
+        <h1>Transforma Tu Cuerpo 💪</h1>
+
+        <p>
+            Entrena con rutinas completas y alcanza tus objetivos fitness.
+        </p>
+
+        <a href="#contacto" class="btn">
+            Empieza Hoy
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ESTADÍSTICAS -->
+
+<section class="stats">
+
+    <div class="stat">
+        <h2>+500</h2>
+        <p>Clientes satisfechos</p>
+    </div>
+
+    <div class="stat">
+        <h2>+120</h2>
+        <p>Rutinas fitness</p>
+    </div>
+
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>Asesoría online</p>
+    </div>
+
+</section>
+
+<!-- RUTINAS -->
+
+<section class="contenedor" id="rutinas">
+
+    <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80">
+
+        <h3>Piernas</h3>
+
+        <p>
+            Rutina intensa para fortalecer piernas y glúteos.
+        </p>
+
+
+
+
+
+    </div>
+
+    <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80">
+
+        <h3>Cardio</h3>
+
+        <p>
+            Quema grasa y mejora tu resistencia física.
+        </p>
+
+
+
+    </div>
+
+    <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80">
+
+        <h3>Abdomen</h3>
+
+        <p>
+            Ejercicios para definir y fortalecer el abdomen.
+        </p>
+
+
+
+    </div>
+
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="servicios" id="servicios">
+
+    <h2>Servicios Fitness</h2>
+
+    <div class="servicios-box">
+
+        <div class="servicio">
+            <h3>Planes Personalizados</h3>
+            <p>Rutinas adaptadas a tus objetivos.</p>
+        </div>
+
+        <div class="servicio">
+            <h3>Nutrición</h3>
+            <p>Consejos alimenticios fitness.</p>
+        </div>
+
+        <div class="servicio">
+            <h3>Asesoría Online</h3>
+            <p>Seguimiento constante.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALERÍA -->
+
+<section class="galeria" id="galeria">
+
+    <h2>Galería Fitness</h2>
+
+    <div class="galeria-grid">
+
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80">
+
+    </div>
+
+</section>
+
+<!-- VIDEO -->
+
+<section class="video">
+
+    <h2>Entrena Desde Casa</h2>
+
+    <div class="video-contenedor">
+
+        <iframe
+                src="https://www.youtube.com/embed/ml6cT4AZdqI"
+                allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+<!-- TESTIMONIOS -->
+
+<section class="testimonios">
+
+    <h2>Testimonios</h2>
+
+    <div class="testimonio-box">
+
+        <div class="testimonio">
+            <p>
+                “Excelente coach y rutinas muy efectivas.”
+            </p>
+
+            <br>
+
+            <strong>- Andrea</strong>
+        </div>
+
+        <div class="testimonio">
+            <p>
+                “Bajé de peso y mejoré mi condición física.”
+            </p>
+
+            <br>
+
+            <strong>- Carlos</strong>
+        </div>
+
+        <div class="testimonio">
+            <p>
+                “Muy buena motivación y asesoría.”
+            </p>
+
+            <br>
+
+            <strong>- Isabel</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PLANES -->
+
+<section class="planes">
+
+    <h2>Planes Fitness</h2>
+
+    <div class="planes-box">
+
+        <div class="plan">
+
+            <h3>Básico</h3>
+
+            <div class="precio">S/29</div>
+
+            <p>Rutinas básicas</p>
+            <p>1 asesoría semanal</p>
+
+        </div>
+
+        <div class="plan">
+
+            <h3>Premium</h3>
+
+            <div class="precio">S/79</div>
+
+            <p>Rutinas completas</p>
+            <p>Nutrición personalizada</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PLAN SEMANAL -->
+
+<section class="planes-semana">
+
+    <h2>Plan Semanal Fitness</h2>
+
+    <div class="tabla-plan">
+
+        <div class="dia">
+            <h3>Lunes</h3>
+            <p>Piernas y glúteos</p>
+        </div>
+
+        <div class="dia">
+            <h3>Martes</h3>
+            <p>Cardio intenso</p>
+        </div>
+
+        <div class="dia">
+            <h3>Miércoles</h3>
+            <p>Abdomen y core</p>
+        </div>
+
+        <div class="dia">
+            <h3>Jueves</h3>
+            <p>Brazos y espalda</p>
+        </div>
+
+        <div class="dia">
+            <h3>Viernes</h3>
+            <p>Full body</p>
+        </div>
+
+    </div>
+
+</section>
+<section class="planes-semana" id="rutinas-completas">
+
+    <h2>Rutinas Completas </h2>
+
+    <div class="tabla-plan">
+
+        <div class="dia" id="piernas">
+
+            <h3>🏋️ Rutina de Piernas</h3>
+
+            <p>
+                • Sentadillas x15<br>
+                • Hip Thrust x15<br>
+                • Zancadas x20<br>
+                • Peso muerto x12
+            </p>
+
+        </div>
+
+        <div class="dia" id="cardio">
+
+            <h3>🔥 Rutina Cardio</h3>
+
+            <p>
+                • Burpees x20<br>
+                • Jumping Jacks x30<br>
+                • Trote 15 min<br>
+                • Mountain Climbers
+            </p>
+
+        </div>
+
+        <div class="dia" id="abdomen">
+
+            <h3>⚡ Rutina Abdomen</h3>
+
+            <p>
+                • Crunch x25<br>
+                • Plancha 1 min<br>
+                • Elevación piernas<br>
+                • Russian Twist
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTADOR -->
+
+<section class="contador">
+
+    <h2>Personas Entrenando Ahora </h2>
+
+    <div id="contador-numero">150</div>
+
+</section>
+
+<!-- IMC -->
+
+<section class="imc">
+
+    <h2>Calcula Tu IMC</h2>
+
+    <div class="imc-box">
+
+        <input type="number" id="peso" placeholder="Peso en kg">
+
+        <input type="number" id="altura" placeholder="Altura en metros">
+
+        <button onclick="calcularIMC()">
+            Calcular IMC
+        </button>
+
+        <p id="resultado-imc"></p>
+
+    </div>
+
+</section>
+
+<!-- BENEFICIOS -->
+
+<section class="beneficios">
+
+    <h2>Beneficios del Entrenamiento</h2>
+
+    <div class="beneficios-box">
+
+        <div class="beneficio">
+            <h3>🔥 Quema grasa</h3>
+            <p>Rutinas diseñadas para perder peso.</p>
+        </div>
+
+        <div class="beneficio">
+            <h3>💪 Gana músculo</h3>
+            <p>Ejercicios para aumentar masa muscular.</p>
+        </div>
+
+        <div class="beneficio">
+            <h3>⚡ Más energía</h3>
+            <p>Mejora tu resistencia física.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section class="contacto" id="contacto">
+
+    <h2>Contáctame</h2>
+
+    <form class="formulario">
+
+        <input type="text" placeholder="Tu nombre">
+
+        <input type="email" placeholder="Tu correo">
+
+        <textarea placeholder="¿Cuál es tu objetivo fitness?"></textarea>
+
+        <a
+                href="https://wa.me/51930590735?text=Hola,%20quiero%20información%20sobre%20las%20rutinas%20fitness"
+                target="_blank"
+                class="btn-whatsapp">
+
+            📱 Hablar por WhatsApp
+
+        </a>
+
+    </form>
+
+</section>
+
+<!-- BOTÓN ARRIBA -->
+
+<a href="#inicio" class="btn-top">
+    ↑
+</a>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 FIT COACH | Entrena con nosotros y supera tus límites
+    </p>
+
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+    /* MENÚ RESPONSIVE */
+
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    toggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+
+    /* CONTADOR */
+
+    let contador = document.getElementById("contador-numero");
+
+    let numero = 150;
+
+    setInterval(() => {
+
+        numero++;
+
+        contador.textContent = numero;
+
+    }, 3000);
+
+    /* CALCULADORA IMC */
+
+    function calcularIMC(){
+
+        let peso = document.getElementById("peso").value;
+
+        let altura = document.getElementById("altura").value;
+
+        let resultado = document.getElementById("resultado-imc");
+
+        let imc = peso / (altura * altura);
+
+        if(imc){
+
+            resultado.innerHTML =
+            "Tu IMC es: " + imc.toFixed(1);
+
+        }else{
+
+            resultado.innerHTML =
+            "Completa los datos correctamente";
+
+        }
+    }
+
+</script>
+
+</body>
+
+</html>
